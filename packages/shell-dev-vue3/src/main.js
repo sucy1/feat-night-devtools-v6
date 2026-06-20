@@ -1,10 +1,69 @@
 import { createApp, h } from 'vue'
 import { createRouter, createWebHashHistory } from 'vue-router'
+import { addInspector } from '@vue/devtools-api'
 import App from './App.vue'
 import App3 from './App3.vue'
 import TestPlugin from './devtools-plugin'
 import SimplePlugin from './devtools-plugin/simple'
 import store from './store'
+
+// Example 1: Simple key-value inspector
+addInspector({
+  id: 'simple-kv-inspector',
+  label: 'Simple KV',
+  icon: 'storage',
+  resolve: app => ({
+    appName: app?._component?.name || 'App',
+    message: 'Hello from simple inspector!',
+    timestamp: Date.now(),
+    version: '1.0.0',
+  }),
+})
+
+// Example 2: Tree structure inspector
+addInspector({
+  id: 'simple-tree-inspector',
+  label: 'Simple Tree',
+  icon: 'account_tree',
+  resolve: () => [
+    {
+      id: 'node-1',
+      label: 'Root Node',
+      description: 'This is the root',
+      children: [
+        {
+          id: 'node-1-1',
+          label: 'Child A',
+          value: 42,
+          active: true,
+        },
+        {
+          id: 'node-1-2',
+          label: 'Child B',
+          value: 'hello',
+        },
+      ],
+    },
+    {
+      id: 'node-2',
+      label: 'Another Root',
+      type: 'secondary',
+    },
+  ],
+})
+
+// Example 3: Single node inspector
+addInspector({
+  id: 'simple-single-inspector',
+  label: 'Single Node',
+  icon: 'info',
+  resolve: () => ({
+    id: 'single',
+    label: 'Single Node Example',
+    data1: 'value1',
+    data2: 123,
+  }),
+})
 
 // eslint-disable-next-line no-extend-native
 Array.prototype.foo = 'bar'
