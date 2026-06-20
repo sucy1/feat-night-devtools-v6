@@ -1,0 +1,24 @@
+{
+  "compilerOptions": {
+    "target": "ES2017",
+    "lib": ["ESNext", "DOM"],
+    "module": "ESNext",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "types": ["node", "webpack-env"],
+    "strictBindCallApply": true,
+    "strictFunctionTypes": true,
+    "alwaysStrict": true,
+    // Strict
+    "noImplicitAny": false,
+    "noImplicitThis": true,
+    "removeComments": false,
+    "sourceMap": false,
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "preserveWatchOutput": true
+  },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules"]
+}
